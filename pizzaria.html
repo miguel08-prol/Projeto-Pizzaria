@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizzaria</title>
+  <link rel="stylesheet" href="pizzaria.css" />
+  <link rel="icon" href="https://www.flaticon.com/br/icone-gratis/pizza_1404945?term=pizza&page=1&position=6&origin=search&related_id=1404945">
+  <link rel="stylesheet" href="https://www.google.com/search?sca_esv=3d47400899ce5444&sxsrf=AE3TifPd3Q409Y-KzMzmrWy__IPdSRue5Q:1749396112885&q=plano+de+fundo+para+pizzaria&udm=2&fbs=AIIjpHxX5k-tONtMCu8aDeA7E5WMdDwGSuc8eBkl8hX51y2q6zXcRDYoJ2KzyHu-jsH4o76971Aaa5PVPfPY_EmxaHinKWPgAOtcX_-YTX163GXD-KXPpKUA6kEbyWIPgDuV0L2zxwXyPJDS9pg5pjCvMbJmoBqQSEPI5nxSZEfn_HW84Y1LPGIhljhHPDR8cvQX2BXMAvYTA6_xIjJo4qCnDRoZ95PW8w&sa=X&sqi=2&ved=2ahUKEwjX7YSvkOKNAxUvp5UCHa67MXAQtKgLegQIERAB&biw=1920&bih=945&dpr=1#vhid=XPyClgxHJ8j05M&vssid=mosaic">
+
+</head>
+<body>
+  <div class="topo">
+    <img src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png" alt="Ícone Pizza" class="topo-icon" />
+    Pizzaria System
+  </div>
+
+
+  <div class="menu">
+    <button onclick="mostrarSecao('Cadastro')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png" alt="Pizza Icon" />
+      Cadastrar Pizza
+    </button>
+    <button onclick="mostrarSecao('consulta')">
+      <img src="https://cdn-icons-png.flaticon.com/512/3917/3917036.png" alt="Consultar Icon" />
+      Consultar Pizza
+    </button>
+    <button onclick="mostrarSecao('alterar')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Editar Icon" />
+      Alterar Pizza
+    </button>
+    <button onclick="mostrarSecao('venda')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Pedido Icon" />
+      Realizar Pedido
+    </button>
+    <button onclick="mostrarSecao('relatorio')">
+      <img src="https://cdn-icons-png.flaticon.com/512/633/633816.png" alt="Relatório Icon" />
+      Relatório de Venda
+    </button>
+  </div>
+
+  <div class="container">
+    <!-- Cadastro -->
+    <div id="Cadastro" class="hidden">
+      <h2>Cadastrar Pizza</h2>
+      <div class="form-group">
+        <label for="tipo">Sabor:</label>
+        <input type="text" id="tipo" placeholder="Digite o tipo de pizza" />
+      </div>
+      <div class="form-group">
+        <label for="ingre">Ingredientes:</label>
+        <input type="text" id="ingre" placeholder="Digite os ingredientes" />
+      </div>
+      <div class="form-group">
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" placeholder="Digite o valor" step="0.01" min="0" />
+      </div>
+      <div class="form-group">
+        <button onclick="Cadastrar()">Cadastrar Pizza</button>
+      </div>
+      <p id="resposta2" class="mensagem"></p>
+    </div>
+
+    <!-- Consulta -->
+    <div id="consulta" class="hidden">
+      <h2>Consultar</h2>
+      <input type="text" id="procurar" placeholder="Procure uma pizza" oninput="buscarpizza()" />
+      <h2>Relatório de Pizza</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Sabor</th>
+            <th>Ingredientes</th>
+            <th>Preço</th>
+          </tr>
+        </thead>
+        <tbody id="pizzas"></tbody>
+      </table>
+    </div>
+
+    <!-- Venda -->
+    <div id="venda" class="hidden">
+      <h2>Venda de Pizza</h2>
+      <div class="form-group">
+        <label for="venda-comprador">Nome do Comprador:</label>
+        <input type="text" id="venda-comprador" placeholder="Digite o nome do comprador" />
+      </div>
+      <div class="form-group">
+        <label for="venda-sabor">Sabor da Pizza:</label>
+        <select id="venda-sabor" onchange="preencherPrecoPizza()">
+          <option value="">Selecione um sabor</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="venda-quantidade">Quantidade:</label>
+        <input type="number" id="venda-quantidade" placeholder="Digite a quantidade de pizza" />
+      </div>
+      <div class="form-group">
+        <label for="venda-preco">Preço:</label>
+        <input type="number" id="venda-preco" readonly />
+      </div>
+      <button onclick="Vendas()">Registrar Venda</button>
+      <p id="resposta-venda"></p>
+    </div>
+
+    <!-- Relatório -->
+    <div id="relatorio" class="hidden">
+      <div class="form-group">
+        <label for="ver">Buscar cliente</label>
+        <input type="text" id="ver" placeholder="Digite o nome do comprador" oninput="Buscarcomprador()" />
+      </div>
+      <h3>Relatório de Vendas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Comprador</th>
+            <th>Sabor</th>
+            <th>Quantidade</th>
+            <th>Preço</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-venda"></tbody>
+      </table>
+    </div>
+
+    <!-- Alterar -->
+<div id="alterar" class="hidden">
+  <h2>Alterar Pizza</h2>
+  <input type="text" id="alteraração" placeholder="Buscar por tipo de pizza" oninput="buscarPizzaParaAlterar()" />
+  <div id="alterar-pizza" class="hidden">
+    <div class="form-group">
+      <label for="novo-tipo">Novo Sabor:</label>
+      <input type="text" id="novo-tipo" placeholder="Digite o novo tipo" />
+    </div>
+    <div class="form-group">
+      <label for="novo-quanti">Novos Ingredientes:</label>
+      <input type="text" id="novo-quanti" placeholder="Digite os novos ingredientes" />
+    </div>
+    <div class="form-group">
+      <label for="novo-preco">Novo Preço:</label>
+      <input type="number" id="novo-preco" placeholder="Digite o novo preço" />
+    </div>
+    <button onclick="alterarPizza()">Salvar Alterações</button>
+    <p id="resposta-alterar" class="mensagem"></p> 
+  </div>
+</div>
+  </div>
+
+  <script src="pizzaria.js"></script>
+  <script>
+    function mostrarSecao(id) {
+      const secoes = document.querySelectorAll('.container > div');
+      secoes.forEach(secao => secao.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>

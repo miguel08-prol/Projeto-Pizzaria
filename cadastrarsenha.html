@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pizzaria</title>
+  <link rel="stylesheet" href="loginpizza.css">
+</head>
+<body>
+  <div id="novasenha" class="container2">
+    <h1 class="texto2">Bem-vindo(a) à nossa Pizzaria</h1>
+    <h2 class="texto2">Faça seu Cadastro para continuar</h2>
+
+    <div class="form-group">
+      <p><label class="texto" for="cadastrarUsuario">Usuário</label></p>
+      <input class="aumento" type="text" id="cadastrarUsuario" placeholder="Digite seu nome de usuário">
+    </div>
+
+    <div class="form-group">
+      <p><label class="texto" for="cadastrarSenha">Senha</label></p>
+      <input class="aumento" type="password" id="cadastrarSenha" placeholder="Digite uma nova senha">
+    </div>
+
+    <div class="form-group">
+      <p><label class="texto" for="confirmarSenha">Confirmar senha</label></p>
+      <input class="aumento" type="password" id="confirmarSenha" placeholder="Confirme sua senha">
+    </div>
+
+    <p><button class="login" onclick="paginalogin()">Fazer Login</button></p>
+    <p class="mensagem"><button onclick="cadastrarSenha()">Cadastrar</button></p>
+    <p id="respostaCadastro" class="mensagem"></p>
+  </div>
+
+  <script src="pizzaria.js"></script>
+</body>
+</html>

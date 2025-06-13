@@ -1,0 +1,89 @@
+.container{
+max-width: 700px;
+margin: auto;
+background: rgba(255, 255, 255,0.8);
+padding: 30px;
+border-radius: 8px;
+}
+
+h1, h2 {
+text-align: center;
+color: rgb(243, 12, 12);
+font-size: 39px;
+}
+
+button {
+background-color: rgb(153, 130, 247);
+color: white;
+cursor: pointer;
+transition: background-color 0.3;
+width: 100px;
+padding: 2px;
+border: 1px solid #fdfcfc;
+border-radius: 6px;
+}
+
+.form-group{
+text-align: center;
+}
+
+.mensagem {
+text-align: center;
+}
+
+.texto{
+font-size: 30px;
+}
+
+body{
+background-image: url(https://blog.bling.com.br/wp-content/uploads/2024/07/nomes-para-pizzaria.webp);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+ min-height: 100vh;
+}
+
+.nova{
+text-align: end;
+}
+
+.botão{
+color: #0606e7;
+background-color: transparent;
+border: transparent;
+}
+
+.container2{
+max-width: 500px;
+margin: auto;
+background: rgba(255, 255, 255,0.8);
+padding: 30px;
+border-radius: 8px;
+}
+
+.texto2{
+text-align: center;
+color: rgb(243, 12, 12);
+font-size: 30px;
+}
+
+.aumento{
+width: 70%;
+padding: 12px 15px;
+}
+
+.login {
+color: #4444ec;
+background-color: transparent;
+border: transparent;
+text-decoration: underline;
+width: 220px;
+}
+
+.mensagem {
+    opacity: 1;
+    transition: opacity 1s ease; /* Duração e tipo de transição */
+}
+.mensagem.fade-out {
+    opacity: 0; /* Torna a mensagem invisível */
+}
